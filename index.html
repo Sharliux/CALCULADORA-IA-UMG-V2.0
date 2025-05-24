@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora con Números Manuscritos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CALCULADORA IA UMG V2.0</h1>
+
+    <div class="contenedor">
+        <input type="file" id="imagen" accept="image/*">
+        <img id="preview" style="max-width: 200px; display:none; margin: 10px auto;" />
+        <button onclick="procesarImagen()">Procesar Imagen</button>
+        <button onclick="abrirCamara()">Tomar Foto</button>
+        <select id="lista-camaras"></select>
+        <video id="video" autoplay style="display:none; width: 300px;"></video>
+        <button onclick="capturarDesdeCamara()" id="btnCapturar" style="display:none;">Capturar</button>
+        <canvas id="canvas" style="display:none;"></canvas>
+
+
+        <p id="numeros">Números detectados: ---</p>
+
+        <div id="opciones" style="display:none;">
+            <select id="operacion">
+                <option value="suma">Sumar</option>
+                <option value="resta">Restar</option>
+                <option value="mult">Multiplicar</option>
+                <option value="div">Dividir</option>
+                <option value="comparacion">Comparar</option>
+                <option value="max_min">Máximo y Mínimo</option>
+                <option value="abs_diff">Diferencia Absoluta</option>
+                <option value="promedio">Promedio</option>
+                <option value="rango">Rango</option>
+                <option value="factorial">Factorial</option>
+                <option value="combinaciones">Combinaciones</option>
+                <option value="permutaciones">Permutaciones</option>
+                <option value="mcd_mcm">MCD y MCM</option>
+                <option value="interpolacion">Interpolación</option>
+                <option value="media_armonica">Media Armónica</option>
+                <option value="ratios">Ratios</option>
+            </select>
+            <button onclick="realizarOperacion()">Calcular</button>
+            <button onclick="reiniciarTodo()">🔄 Reiniciar</button>
+
+        </div>
+
+        <pre id="resultado"></pre>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
