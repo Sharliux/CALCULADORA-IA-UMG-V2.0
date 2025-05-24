@@ -112,7 +112,11 @@ def procesar():
         return jsonify({"error": "No se proporcionó ninguna imagen."}), 400
     imagen = request.files["imagen"]
     a, b = analizar_con_separador(imagen)
-    return jsonify({"numero1": int(a), "numero2": int(b)})
+    return jsonify({
+    "numero1": int(a) if a is not None else None,
+    "numero2": int(b) if b is not None else None
+})
+
 
 
 @app.route("/operar", methods=["POST"])
