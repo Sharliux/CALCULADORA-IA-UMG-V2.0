@@ -4,6 +4,4 @@ tensorflow
 opencv-python
 pillow
 scipy
-pip install gunicorn
-pip freeze > requirements.txt
-
+gunicorn
