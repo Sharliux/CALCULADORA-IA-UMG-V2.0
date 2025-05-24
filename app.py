@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import cv2
@@ -7,12 +6,10 @@ import math
 from PIL import Image
 from scipy.special import comb, perm
 from tensorflow.keras.models import load_model
-import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Ruta del modelo cargado
 MODEL_PATH = "modelo_mnist.keras"
 modelo = load_model(MODEL_PATH)
 
@@ -113,11 +110,9 @@ def procesar():
     imagen = request.files["imagen"]
     a, b = analizar_con_separador(imagen)
     return jsonify({
-    "numero1": int(a) if a is not None else None,
-    "numero2": int(b) if b is not None else None
-})
-
-
+        "numero1": int(a) if a is not None else None,
+        "numero2": int(b) if b is not None else None
+    })
 
 @app.route("/operar", methods=["POST"])
 def operacion():
@@ -127,11 +122,3 @@ def operacion():
     op = data["op"]
     resultado = operar(a, b, op)
     return jsonify({"resultado": resultado})
-
-import os
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
-
